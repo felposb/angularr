@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row g-3">
+    @for(c of card; track c.id){
+    <div class="col-12 col-md-6 col-lg-3">
+        <app-cards-dashboard [nome]="c.nome" [valor]="c.valor"></app-cards-dashboard>
+    </div>
+    }
+  </div>
+  <div class="row mt-2">
+    <div class="col-12 col-md-6 col-lg-12">
+      <app-pesquisa-dashboard></app-pesquisa-dashboard>
+    </div>
+  </div>
+
+  <div class="row mt-2 g-2">
+    <div class="col-12 col-md-6">
+  @for(p of pessoas; track p.id){
+      <div  (click)="pessoaSelecionada = p.id" class="mb-2">
+        <app-card-pessoas-dashboard [pessoa]="p"></app-card-pessoas-dashboard>
+      </div>
+    }
+    </div>
+    <div class="col-12 col-md-6">
+          @for(d of dadosPessoas; track d.id){
+            @if(pessoaSelecionada === d.id){
+                <app-dados-pessoa-dashboard [dadoPessoa]="d"></app-dados-pessoa-dashboard>
+          }
+      }
+    </div>
+  </div>
+  </div>
+
